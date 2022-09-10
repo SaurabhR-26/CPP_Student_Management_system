@@ -5,13 +5,13 @@ using namespace std;
 
 class Student
 {
-private:
-    /*student record info*/
+public:
+    /*student personal record info*/
     string name;
     long int prn;
     int year_study; // to choose from 1st ,2nd ,3rd ,4th
     int branch;     // user will choose from options
-    bool gender;
+    string gender;
     string state;
     int admission_year;
     int bday_date;
@@ -60,10 +60,6 @@ private:
     bool is_deficient;
     string deficiency;
     string blood_grp;
-
-    void personalInfoInput()
-    {
-    }
 };
 
 class teacher

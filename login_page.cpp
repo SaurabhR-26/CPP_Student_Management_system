@@ -1,7 +1,12 @@
 #include <iostream>
-#include <bits/stdc++.h>
+#include <time.h>
+#include <conio.h>
+#include <stdlib.h>
+#include <stdio.h>
+#include <fstream>
 #include <unistd.h>
 #include <conio.h>
+#include "coordinate.h"
 
 using namespace std;
 
@@ -60,7 +65,9 @@ reenter:
     int flag = 0;
     int time = 6;
     int choi;
-    string username, password, ur, pw;
+    string username, ur, pw;
+    char password[25];
+    char ch;
     cout << "\t\t\t\t\t ___________________" << endl;
     cout << "\t\t\t\t\t|    USER LOGIN     |" << endl;
     cout << "\t\t\t\t\t|___________________|" << endl
@@ -75,7 +82,20 @@ reenter:
     cin >> username;
     cout << endl;
     cout << "\t\t\t\tPASSWORD : ";
-    cin >> password;
+    // cin >> password;
+
+    // input of password is taken as private
+    int i = 0;
+    while (1)
+    {
+        ch = getche();
+        if (ch == 13)
+            break;
+        password[i] = ch;
+        cout << "\b*";
+        i++;
+    }
+    password[i] = '\0';
     cout << endl;
     ifstream examine;
     examine.open("test_file_1.txt");
@@ -127,7 +147,9 @@ void registration()
 {
     system("cls");
     int pass_cnt = 0;
-    string user, pass;
+    string user;
+    char ch;
+    char pass[25];
     cout << "\t\t\t\t\t _____________________________" << endl;
     cout << "\t\t\t\t\t|        REGISTRATION         |" << endl;
     cout << "\t\t\t\t\t|_____________________________|" << endl
@@ -138,7 +160,22 @@ void registration()
     cout << endl;
 step:
     cout << "\t\t\tENTER PASSWORD :";
-    cin >> pass;
+    int i = 0, flag = 0;
+    while (1)
+    {
+        ch = getche();
+        if (ch == 13)
+        {
+            break;
+        }
+        pass[i] = ch;
+        printf("\b*");
+        if (ch == '~' || ch == '@' || ch == '#' || ch == '$' || ch == '%' || ch == '^' || ch == '&' || ch == '*')
+            flag = 1;
+        i++;
+    }
+    pass[i] = '\0';
+    // cin >> pass;
     cout << endl;
     pass_cnt = 0;
     while (pass[pass_cnt] != '\0')
@@ -148,6 +185,15 @@ step:
     if (pass_cnt < 8)
     {
         cout << "Password length is not sufficient: Please Re-enter !" << endl;
+        sleep(2);
+        system("cls");
+        goto step;
+    }
+    else if (flag == 0)
+    {
+        gotoxy(23, 30);
+        cout << "No special Character detected !" << endl;
+        cout << "Password is not strong.....please re-enter" << endl;
         sleep(2);
         system("cls");
         goto step;
