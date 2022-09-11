@@ -47,6 +47,9 @@ using namespace std;
 
 int main()
 {
+    bool val;
     system("cls");
-    input_personal_info();
+    // input_personal_info();
+    // val = isCorrect();
+    contact();
 }

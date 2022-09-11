@@ -7,6 +7,7 @@
 #include <unistd.h>
 #include <conio.h>
 #include "coordinate.h"
+#include "student_info.h"
 
 using namespace std;
 
@@ -215,6 +216,13 @@ step:
             regs << user << endl;
             regs << pass;
         }
+    jump:
+        input_personal_info();
+        bool test = isCorrect();
+        if (test == TRUE)
+            goto jump;
+        contact();
+        system("cls");
 
         cout << "\t\t\t -: YOUR REGISTRATION IS SUCCESSFULLY COMPLETED :--" << endl;
 

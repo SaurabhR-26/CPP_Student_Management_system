@@ -1,6 +1,6 @@
 #include <iostream>
-#include <string>
-#include "coordinate.h"
+#include <cstring>
+// #include "coordinate.h"
 using namespace std;
 
 class Student
@@ -12,7 +12,7 @@ public:
     int year_study; // to choose from 1st ,2nd ,3rd ,4th
     int branch;     // user will choose from options
     string gender;
-    string state;
+
     int admission_year;
     int bday_date;
     int bday_mon;
@@ -20,7 +20,12 @@ public:
 
     /*contact info*/
     string email;
-    long int mobile_no;
+    long long int mobile_no;
+    string address;
+    long int pincode;
+    string state;
+    string city;
+    string nationality;
 
     /*details of mother */
     string mother_name;
@@ -32,9 +37,6 @@ public:
     string prof_father;
     long int income_father;
 
-    string address;
-    long int pincode;
-
     /*--------------------details of 10 th-----------------*/
     float percent_ssc;
     string name_ssc_school;
@@ -44,8 +46,6 @@ public:
     float percent_hsc;
     string name_hsc_school;
     bool is_uploaded_2; // to check whether marksheet is uploaded or not
-
-    string nationality;
 
     // economic details
     long int income_family;
