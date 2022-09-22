@@ -31,11 +31,13 @@ public:
     string mother_name;
     string prof_mother;
     long int income_mother;
+    long long int mobile_mother;
 
     /*details of father*/
     string father_name;
     string prof_father;
     long int income_father;
+    long long int mobile_father;
 
     /*--------------------details of 10 th-----------------*/
     float percent_ssc;
@@ -59,7 +61,10 @@ public:
     /*medical information*/
     bool is_deficient;
     string deficiency;
+    bool is_handicapped;
+    string handicpped;
     string blood_grp;
+    float height;
 };
 
 class teacher

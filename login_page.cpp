@@ -6,8 +6,8 @@
 #include <fstream>
 #include <unistd.h>
 #include <conio.h>
-#include "coordinate.h"
-#include "student_info.h"
+// #include "coordinate.h"
+#include "student_registration.h"
 
 using namespace std;
 
@@ -146,22 +146,117 @@ reenter:
 
 void registration()
 {
-    system("cls");
+    int x, y;
+    // printing the required format
+    {
+        int x, y;
+        x = 35;
+        y = 7;
+        while (x < 75)
+        {
+            cout << "_";
+            x++;
+            gotoxy(x, y);
+        }
+
+        x = 35;
+        y = 10;
+        while (x <= 75)
+        {
+            cout << "_";
+            x++;
+            gotoxy(x, y);
+        }
+
+        gotoxy(35, 8);
+        cout << "|";
+        gotoxy(35, 9);
+        cout << "|";
+        gotoxy(35, 10);
+        cout << "|";
+        gotoxy(75, 8);
+        cout << "|";
+        gotoxy(75, 9);
+        cout << "|";
+        gotoxy(75, 10);
+        cout << "|";
+
+        // printing the required info
+        gotoxy(48, 9);
+        cout << "REGISTRATION";
+
+        gotoxy(35, 14);
+        cout << "USERNAME :";
+        gotoxy(35, 18);
+        cout << "PASSWORD :";
+
+        gotoxy(50, 14);
+        cout << "|";
+        gotoxy(75, 14);
+        cout << " |";
+        gotoxy(75, 15);
+        cout << " |";
+        gotoxy(50, 15);
+        cout << "|";
+
+        gotoxy(50, 18);
+        cout << "|";
+        gotoxy(75, 18);
+        cout << " |";
+        gotoxy(75, 19);
+        cout << " |";
+        gotoxy(50, 19);
+        cout << "|";
+
+        x = 50;
+        y = 13;
+        while (x < 75)
+        {
+            cout << "_";
+            x++;
+            gotoxy(x, y);
+        }
+
+        x = 50;
+        y = 15;
+        while (x < 75)
+        {
+            cout << "_";
+            x++;
+            gotoxy(x, y);
+        }
+
+        x = 50;
+        y = 17;
+        while (x < 75)
+        {
+            cout << "_";
+            x++;
+            gotoxy(x, y);
+        }
+
+        x = 50;
+        y = 19;
+        while (x <= 75)
+        {
+            cout << "_";
+            x++;
+            gotoxy(x, y);
+        }
+    }
+
+    // taking input from the user
     int pass_cnt = 0;
     string user;
     char ch;
     char pass[25];
-    cout << "\t\t\t\t\t _____________________________" << endl;
-    cout << "\t\t\t\t\t|        REGISTRATION         |" << endl;
-    cout << "\t\t\t\t\t|_____________________________|" << endl
-         << endl;
 
-    cout << "\t\t\tENTER USERNAME :";
+    gotoxy(52, 14);
     cin >> user;
-    cout << endl;
 step:
-    cout << "\t\t\tENTER PASSWORD :";
+    gotoxy(52, 18);
     int i = 0, flag = 0;
+    pass_cnt = 0;
     while (1)
     {
         ch = getche();
@@ -169,34 +264,79 @@ step:
         {
             break;
         }
+        if (ch == 8)
+        {
+            cout << "\b ";
+        }
         pass[i] = ch;
         printf("\b*");
         if (ch == '~' || ch == '@' || ch == '#' || ch == '$' || ch == '%' || ch == '^' || ch == '&' || ch == '*')
             flag = 1;
         i++;
-    }
-    pass[i] = '\0';
-    // cin >> pass;
-    cout << endl;
-    pass_cnt = 0;
-    while (pass[pass_cnt] != '\0')
-    {
         pass_cnt++;
     }
+    pass[i] = '\0';
+
     if (pass_cnt < 8)
     {
-        cout << "Password length is not sufficient: Please Re-enter !" << endl;
+        x = 35;
+        y = 21;
+        gotoxy(x, y);
+        while (x <= 88)
+        {
+            cout << " ";
+            gotoxy(x, y);
+            x++;
+        }
+        x = 36;
+        y = 21;
+        gotoxy(x, y);
+        while (x <= 88)
+        {
+            cout << " ";
+            gotoxy(x, y);
+            x++;
+        }
+        gotoxy(35, 21);
+        cout << "Password length is not sufficient!" << endl;
+        x = 52;
+        y = 18;
+        gotoxy(x, y);
+        while (x <= 68)
+        {
+            cout << " ";
+            gotoxy(x, y);
+            x++;
+        }
         sleep(2);
-        system("cls");
         goto step;
     }
     else if (flag == 0)
     {
-        gotoxy(23, 30);
-        cout << "No special Character detected !" << endl;
-        cout << "Password is not strong.....please re-enter" << endl;
+        x = 35;
+        y = 21;
+        gotoxy(x, y);
+        while (x <= 88)
+        {
+            cout << " ";
+            gotoxy(x, y);
+            x++;
+        }
+        gotoxy(35, 21);
+        cout << "No special Character detected !";
+        gotoxy(35, 22);
+        cout << "Password is not strong.....please re-enter";
+
+        x = 52;
+        y = 18;
+        gotoxy(x, y);
+        while (x <= 68)
+        {
+            cout << " ";
+            gotoxy(x, y);
+            x++;
+        }
         sleep(2);
-        system("cls");
         goto step;
     }
     else
@@ -214,26 +354,26 @@ step:
         else
         {
             regs << user << endl;
-            regs << pass;
+            regs << pass << endl;
         }
-    jump:
-        input_personal_info();
-        bool test = isCorrect();
-        if (test == TRUE)
-            goto jump;
-        contact();
-        system("cls");
-
-        cout << "\t\t\t -: YOUR REGISTRATION IS SUCCESSFULLY COMPLETED :--" << endl;
-
-        cout << endl
-             << endl
-             << endl;
-        cout << "\t\t\t\t\t(: THANK YOU FOR REGISTERING :)" << endl;
-        sleep(4);
-        getchar();
-        return;
     }
+
+    input_personal_info();
+    contact();
+    parentDetails();
+    hsc_ssc_details();
+    other_details();
+    isCorrect();
+    system("cls");
+    system("color 2");
+    gotoxy(40, 15);
+    cout << "--: YOUR REGISTRATION IS SUCCESSFULLY COMPLETED :--" << endl;
+    gotoxy(45, 18);
+    cout << "(: THANK YOU FOR REGISTERING :)" << endl;
+    sleep(4);
+    system("color F");
+    getchar();
+    return;
 }
 
 int forget()
@@ -344,9 +484,11 @@ int main()
             login();
             break;
         case 2:
+            system("cls");
             registration();
             break;
         case 3:
+            system("cls");
             forget();
             break;
         case 4:
