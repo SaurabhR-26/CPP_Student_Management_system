@@ -11,5 +11,5 @@ int main()
 {
     bool val;
     system("cls");
-    registration();
+    register_teacher();
 }

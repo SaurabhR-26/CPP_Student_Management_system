@@ -69,12 +69,13 @@ public:
 
 class teacher
 {
+public:
     // details
-    string name;
-    int teacher_id;
-    string subject;
-    string degree;
-    int age;
+    string name;    //
+    int teacher_id; //
+    string subject; //
+    string degree;  //
+    int age;        //
     int experience;
-    string designation;
+    string designation; //
 };

@@ -33,11 +33,13 @@ int welcome_page()
     cout << "\t\t\t\t|            -: Welcome :-              |" << endl;
     cout << "\t\t\t\t|_______________________________________|" << endl;
     cout << "\t\t\t\t\tTime :" << t << endl;
-    cout << "\t\t\t\t 1.LOGIN" << endl;
-    cout << "\t\t\t\t 2.REGISTRATION" << endl;
+    cout << "\t\t\t\t 1.STUDENT LOGIN" << endl;
+    cout << "\t\t\t\t 2.STUDENT REGISTRATION" << endl;
     cout << "\t\t\t\t 3.FORGET PASSWORD" << endl;
-    cout << "\t\t\t\t 4.ADMIN LOGIN" << endl;
-    cout << "\t\t\t\t 5.EXIT" << endl;
+    cout << "\t\t\t\t 4.TEACHER LOGIN" << endl;
+    cout << "\t\t\t\t 5.TEACHER REGISTRATION" << endl;
+    cout << "\t\t\t\t 6.ADMIN LOGIN" << endl;
+    cout << "\t\t\t\t 7.EXIT" << endl;
     cout << endl
          << endl;
     cout << "\t\t\t\t\t\t YOUR CHOICE :";
@@ -492,11 +494,18 @@ int main()
             forget();
             break;
         case 4:
+
+        case 5:
+            system("cls");
+            register_teacher();
+            break;
+        case 6:
             admin_login();
             break;
-        case 5:
+        case 7:
             goto exit;
             break;
+
         default:
             val = failure_page();
             if (val == 2)
@@ -509,12 +518,3 @@ exit:
          << "\t\t\t\t-: THANK YOU FOR USING SYSTEM :-";
     return 0;
 }
-
-/*
-1.teacher login
-2.student login
-3.student class
-4.teacher class
-5.timetable
-6.cgpa
-*/
