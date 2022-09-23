@@ -4,9 +4,9 @@
 #include "mainheader.h"
 #include <string>
 #include <fstream>
-Student obj;
+
 teacher t;
-void input_personal_info()
+void input_personal_info(Student *obj)
 {
     int gender_opt;
     int x, y;
@@ -78,17 +78,17 @@ void input_personal_info()
     /*start of input*/
     _flushall();
     gotoxy(11, 8);
-    getline(cin, obj.name);
+    getline(cin, obj->name);
     gotoxy(11, 11);
-    cin >> obj.bday_date >> obj.bday_mon >> obj.bday_year;
+    cin >> obj->bday_date >> obj->bday_mon >> obj->bday_year;
     gotoxy(52, 11);
-    cin >> gender_opt;
+    cin >> obj->gender;
     gotoxy(20, 15);
-    cin >> obj.year_study;
+    cin >> obj->year_study;
     gotoxy(20, 17);
-    cin >> obj.branch;
+    cin >> obj->branch;
     gotoxy(20, 19);
-    cin >> obj.admission_year;
+    cin >> obj->admission_year;
 }
 
 // confirmation page
@@ -143,7 +143,7 @@ step:
     }
 }
 
-void contact()
+void contact(Student *obj)
 {
     system("cls");
     int x, y, cnt;
@@ -183,26 +183,26 @@ void contact()
 
     /*input details*/
     gotoxy(20, 8);
-    cin >> obj.mobile_no;
+    cin >> obj->mobile_no;
     _flushall();
     gotoxy(59, 8);
-    getline(cin, obj.email);
+    getline(cin, obj->email);
     _flushall();
     gotoxy(14, 15);
-    getline(cin, obj.address);
+    getline(cin, obj->address);
     _flushall();
     gotoxy(13, 18);
-    cin >> obj.city;
+    cin >> obj->city;
     gotoxy(60, 18);
-    cin >> obj.pincode;
+    cin >> obj->pincode;
 
     gotoxy(13, 20);
-    cin >> obj.state;
+    cin >> obj->state;
     gotoxy(63, 20);
-    cin >> obj.nationality;
+    cin >> obj->nationality;
 }
 
-void parentDetails()
+void parentDetails(Student *obj)
 
 {
     system("cls");
@@ -243,37 +243,37 @@ void parentDetails()
     /*input of the details*/
     _flushall();
     gotoxy(21, 8);
-    getline(cin, obj.father_name);
+    getline(cin, obj->father_name);
     _flushall();
     gotoxy(74, 8);
-    getline(cin, obj.prof_father);
+    getline(cin, obj->prof_father);
     _flushall();
 
     gotoxy(24, 10);
-    cin >> obj.income_father;
+    cin >> obj->income_father;
     gotoxy(78, 10);
-    cin >> obj.mobile_father;
+    cin >> obj->mobile_father;
     _flushall();
     gotoxy(20, 14);
-    getline(cin, obj.mother_name);
+    getline(cin, obj->mother_name);
     _flushall();
     gotoxy(73, 14);
-    getline(cin, obj.prof_mother);
+    getline(cin, obj->prof_mother);
     _flushall();
 
     gotoxy(24, 16);
-    cin >> obj.income_mother;
+    cin >> obj->income_mother;
     gotoxy(76, 16);
-    cin >> obj.mobile_mother;
+    cin >> obj->mobile_mother;
 
     gotoxy(52, 20);
-    obj.income_family = obj.income_father + obj.income_mother;
-    cout << obj.income_family;
+    obj->income_family = obj->income_father + obj->income_mother;
+    cout << obj->income_family;
 
     sleep(3);
 }
 
-void hsc_ssc_details()
+void hsc_ssc_details(Student *obj)
 {
     system("cls");
     int x, y;
@@ -313,33 +313,33 @@ void hsc_ssc_details()
 
     /*------------Input Details --------------*/
     gotoxy(19, 10);
-    cin >> obj.percent_ssc;
+    cin >> obj->percent_ssc;
     gotoxy(64, 10);
     _flushall();
-    getline(cin, obj.name_ssc_school);
+    getline(cin, obj->name_ssc_school);
     _flushall();
     gotoxy(70, 12);
     cin >> ch;
     if (ch == 'Y')
-        obj.is_uploaded_1 = TRUE;
+        obj->is_uploaded_1 = TRUE;
     else
-        obj.is_uploaded_1 = FALSE;
+        obj->is_uploaded_1 = FALSE;
 
     gotoxy(19, 18);
-    cin >> obj.percent_hsc;
+    cin >> obj->percent_hsc;
     gotoxy(64, 18);
     _flushall();
-    getline(cin, obj.name_hsc_school);
+    getline(cin, obj->name_hsc_school);
     _flushall();
     gotoxy(70, 20);
     cin >> ch;
     if (ch == 'Y')
-        obj.is_uploaded_2 = TRUE;
+        obj->is_uploaded_2 = TRUE;
     else
-        obj.is_uploaded_2 = FALSE;
+        obj->is_uploaded_2 = FALSE;
 }
 
-void other_details()
+void other_details(Student *obj)
 {
     system("cls");
     int x, y;
@@ -385,10 +385,10 @@ void other_details()
     /*inputting the details from the user*/
     gotoxy(20, 10);
     _flushall();
-    getline(cin, obj.blood_grp);
+    getline(cin, obj->blood_grp);
     _flushall();
     gotoxy(54, 10);
-    cin >> obj.height;
+    cin >> obj->height;
     _flushall();
     gotoxy(29, 12);
     cin >> ch;
@@ -396,7 +396,7 @@ void other_details()
     {
         gotoxy(49, 12);
         _flushall();
-        getline(cin, obj.deficiency);
+        getline(cin, obj->deficiency);
         _flushall();
     }
     else
@@ -412,7 +412,7 @@ void other_details()
     {
         gotoxy(49, 14);
         _flushall();
-        getline(cin, obj.deficiency);
+        getline(cin, obj->deficiency);
         _flushall();
     }
     else
@@ -423,18 +423,223 @@ void other_details()
 
     gotoxy(15, 20);
     _flushall();
-    getline(cin, obj.caste);
+    getline(cin, obj->caste);
     _flushall();
     gotoxy(72, 20);
     cin >> ch;
     if (ch == 'Y')
-        obj.is_scholership = TRUE;
+        obj->is_scholership = TRUE;
     else
-        obj.is_scholership = FALSE;
+        obj->is_scholership = FALSE;
 }
 
 teacher register_teacher()
 {
+
+    int x, y;
+    // printing the required format
+    {
+        int x, y;
+        x = 35;
+        y = 7;
+        while (x < 75)
+        {
+            cout << "_";
+            x++;
+            gotoxy(x, y);
+        }
+
+        x = 35;
+        y = 10;
+        while (x <= 75)
+        {
+            cout << "_";
+            x++;
+            gotoxy(x, y);
+        }
+
+        gotoxy(35, 8);
+        cout << "|";
+        gotoxy(35, 9);
+        cout << "|";
+        gotoxy(35, 10);
+        cout << "|";
+        gotoxy(75, 8);
+        cout << "|";
+        gotoxy(75, 9);
+        cout << "|";
+        gotoxy(75, 10);
+        cout << "|";
+
+        // printing the required info
+        gotoxy(40, 9);
+        cout << "TEACHER REGISTRATION";
+
+        gotoxy(35, 14);
+        cout << "USERNAME :";
+        gotoxy(35, 18);
+        cout << "PASSWORD :";
+
+        gotoxy(50, 14);
+        cout << "|";
+        gotoxy(75, 14);
+        cout << " |";
+        gotoxy(75, 15);
+        cout << " |";
+        gotoxy(50, 15);
+        cout << "|";
+
+        gotoxy(50, 18);
+        cout << "|";
+        gotoxy(75, 18);
+        cout << " |";
+        gotoxy(75, 19);
+        cout << " |";
+        gotoxy(50, 19);
+        cout << "|";
+
+        x = 50;
+        y = 13;
+        while (x < 75)
+        {
+            cout << "_";
+            x++;
+            gotoxy(x, y);
+        }
+
+        x = 50;
+        y = 15;
+        while (x < 75)
+        {
+            cout << "_";
+            x++;
+            gotoxy(x, y);
+        }
+
+        x = 50;
+        y = 17;
+        while (x < 75)
+        {
+            cout << "_";
+            x++;
+            gotoxy(x, y);
+        }
+
+        x = 50;
+        y = 19;
+        while (x <= 75)
+        {
+            cout << "_";
+            x++;
+            gotoxy(x, y);
+        }
+    }
+
+    // taking input from the user
+    int pass_cnt = 0;
+    string user;
+    char ch;
+    char pass[25];
+
+    gotoxy(52, 14);
+    cin >> user;
+step:
+    gotoxy(52, 18);
+    int i = 0, flag = 0;
+    pass_cnt = 0;
+    while (1)
+    {
+        ch = getche();
+        if (ch == 13)
+        {
+            break;
+        }
+        if (ch == 8)
+        {
+            cout << "\b ";
+        }
+        pass[i] = ch;
+        printf("\b*");
+        if (ch == '~' || ch == '@' || ch == '#' || ch == '$' || ch == '%' || ch == '^' || ch == '&' || ch == '*')
+            flag = 1;
+        i++;
+        pass_cnt++;
+    }
+    pass[i] = '\0';
+
+    if (pass_cnt < 8)
+    {
+        x = 35;
+        y = 21;
+        gotoxy(x, y);
+        while (x <= 88)
+        {
+            cout << " ";
+            gotoxy(x, y);
+            x++;
+        }
+        x = 36;
+        y = 21;
+        gotoxy(x, y);
+        while (x <= 88)
+        {
+            cout << " ";
+            gotoxy(x, y);
+            x++;
+        }
+        gotoxy(35, 21);
+        cout << "Password length is not sufficient!" << endl;
+        x = 52;
+        y = 18;
+        gotoxy(x, y);
+        while (x <= 68)
+        {
+            cout << " ";
+            gotoxy(x, y);
+            x++;
+        }
+        sleep(2);
+        goto step;
+    }
+    else if (flag == 0)
+    {
+        x = 35;
+        y = 21;
+        gotoxy(x, y);
+        while (x <= 88)
+        {
+            cout << " ";
+            gotoxy(x, y);
+            x++;
+        }
+        gotoxy(35, 21);
+        cout << "No special Character detected !";
+        gotoxy(35, 22);
+        cout << "Password is not strong.....please re-enter";
+
+        x = 52;
+        y = 18;
+        gotoxy(x, y);
+        while (x <= 68)
+        {
+            cout << " ";
+            gotoxy(x, y);
+            x++;
+        }
+        sleep(2);
+        goto step;
+    }
+    else
+    {
+        system("cls");
+        ofstream regs;
+        regs.open("teacher_login.txt", ios_base::app);
+
+        regs << endl
+             << user << endl;
+        regs << pass << endl;
+    }
+    system("cls");
     printBorder();
 
     // printing the required information
